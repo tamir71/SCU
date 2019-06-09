@@ -12,8 +12,8 @@ COEN
 |   \---Labs 1-6
 |   \---Term Project
 |---COEN 21
-|   \---
-|   \---
+|   \---Homework
+|   \---Prelabs
 \
 
 MATH
