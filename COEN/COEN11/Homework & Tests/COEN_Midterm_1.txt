@@ -1,0 +1,18 @@
+union occasion {
+    char name[];
+    int years;
+    float average_age;
+}
+
+struct info {
+    char name[];
+    int size;
+    int special_occasion;
+    union occasion extra_info;
+}
+
+struct info list[10];
+
+if (list[i].special_occasion == 1) {
+    prinft("%s", list[i].occasion.name = userName);
+}

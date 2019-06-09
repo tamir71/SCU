@@ -1,0 +1,5 @@
+Name	Group Size
+--------------------
+John	3
+Bill	5
+Tim	3

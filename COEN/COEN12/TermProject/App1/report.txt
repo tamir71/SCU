@@ -1,0 +1,11 @@
+Application 1 Implementation:
+
+Big-O Runtimes (worst-case):
+    O(1): createDataSet()
+    O(1): destroyDataSet()
+    O(n): searchAge()
+    O(1): insert()
+    O(n): deleteElt()
+    O(1): maxAgeGap()
+
+The reason why I chose to use an array of structures to maintain the student records is because we already know the max number of students in our records. Since we do a lot of operations on student ages, since searching with an array is only O(n), I figured that it won't be that discouraging to use this. Some other implementations that might have worked better is a BST/heap, because that would reduce down the ages to O(logn).

@@ -1,0 +1,12 @@
+Application 3 Implementation:
+
+Big-O runtimes (worst-case):
+    O(1): createDataSet()
+    O(1): destroyDataSet()
+    O(n): searchAge()
+    O(n): searchId()
+    O(1): insert()
+    O(n): deleteElt()
+    O(1): maxAgeGap()
+
+Again, similarly to my implementation for App3, I chose an array of structures to maintain student records. We don't know the maximum amount of students, but we can easily reallocate the data size (x2) when it reaches the maximum. Adding and removing from an array is only O(1) with an array, if we keep it unsorted. Again, when it comes to constant adding and removing, searching is O(n). Heaps and BSTs for searching is O(h) if we try to keep as completeness as possible. 

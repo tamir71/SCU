@@ -1,0 +1,21 @@
+Problem 1:
+Output [abc, 0, 1]
+
+Problem 2:
+typedef struct info {
+    char string[STR_SIZE];
+    int number;
+} INFO;
+
+INFO x[ARRAY_SIZE];
+
+void list(void) {
+    int i;
+    for (i = 0; i < ARRAY_SIZE; i++) {
+        scanf("%s", x[i].string);
+        scanf("%d", x[i].number);
+    }
+    return;
+}
+
+

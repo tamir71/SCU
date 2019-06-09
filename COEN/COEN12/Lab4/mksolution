@@ -1,0 +1,9 @@
+#!/bin/sh
+
+rm -rf solution
+mkdir solution
+
+cp -a Makefile maze.c radix.c unique.c parity.c set.h list.h set.c list.c solution
+
+tar cvf solution.tar ./solution
+rm -rf solution
