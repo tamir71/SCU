@@ -1,22 +1,8 @@
-/*
- * File:        table.c
- *
- * Copyright:	2017, Darren C. Atkinson
- *
- * Description: This file contains the public and private function and type
- *              definitions for a set abstract data type for generic
- *              pointer types.  A set is an unordered collection of unique
- *              elements.
- *
- *              This implementation uses a hash table to store the
- *              elements, with linear probing to resolve collisions.
- *              Insertion, deletion, and membership checks are all average
- *              case constant time.
+/*  
+ *  table.c by Darren C. Atkinson
+ *  Adapted by Tamir Enkhjargal
+ *  COEN 12 Lab 6, Spring 2019
  */
-  
-        /*  Adapted by Tamir Enkhjargal
-         *  COEN 12 Lab 6, Spring 2019
-         */
 
 
 # include <stdio.h>
@@ -228,52 +214,73 @@ void *findElement(SET *sp, void *elt)
     return found ? sp->data[locn] : NULL;
 }
 
-/* Implementing the getElements function, which calls my quickSort() function. */
+/* Implementing the getElements function, which calls my quickSort() function. 
+ *
+ * Runs in O(n^3), as getElements runs with O(n) and calls quickSort(), an O(n^2) operation
+ *
+ * */
 
 void *getElements(SET *sp) {
     assert(sp != NULL);
-    void **array = malloc(sizeof(void *)*sp->count);
-    assert(array != NULL);
-    int i, counter;
-    counter = 0;
-    for(i = 0; i < sp->length; i++) {
-        if(sp->flags[i] == FILLED) {
-            array[counter] = sp->data[i];
-            counter++;
+    void **array = malloc(sizeof(void *)*sp->count);                // Create secondary array with only FILLED objects
+    int i, j;
+    j = 0;
+    for(i = 0; i < sp->length; i++) {                               // Loop through entire array
+        if(sp->flags[i] == FILLED) {                                // If it is filled with an entity
+            array[j] = sp->data[i];                                 // Copy that to our FILLED array
+            j++;
         }
     }
-    quickSort(sp, array, 0, sp->count-1);
+    quickSort(array, 0, sp->count-1, sp->compare);                  // Call quickSort() with the new array
     return array;
 }
 
-void quickSort(SET *sp, void **data, int low, int high) {
-    assert(sp != NULL);
+/* Implementing the quickSort algorithm.
+ *
+ * Runs in O(n^2) worst-case situation. It calls the partition (O(n) runtime) function with new pivots
+ * and works recursively.
+ *
+ */
+
+void quickSort(void **data, int low, int high, int(*compare)()) {
     int pivot;
-    if(low < high) {
-        pivot = partition(sp, data, low, high);
-        quickSort(sp, data, low, pivot-1);
-        quickSort(sp, data, pivot+1, high);
+    if(low < high) {                                                // When low = high or low > high, we are done
+        pivot = partition(data, low, high, compare);                // Partition the portion of data indicated by pivot.
+        quickSort(data, low, pivot-1, compare);                     // Then quickSort everything below pivot
+        quickSort(data, pivot+1, high, compare);                    // and everything above pivot
     }
+    return;
 }
 
-int partition(SET *sp, void **data, int high, int low) {
-    assert(sp != NULL);
-    void *pivot = data[high];
-    int i = low-1;
-    int j;
-    for(j = low; j < high; j++) {
-        if((*sp->compare)(data[j], pivot) <= 0) {
-            i++;
-            swap(data[i], data[j]);
+/* Running quickSort algorithm with a separate partition function.
+ *
+ * O(n) runtime per call of partition.
+ *
+ */
+
+int partition(void **data, int low, int high, int(*compare)()) {
+    void *pivot = data[high];                                       // Make the pivot at the start
+    int i, j;
+    j = low;
+    for(i = low; i <= high-1; i++) {                                // Within each partition, we begin our swapping
+        if((*compare)(data[i], pivot) <= 0) {                       // This functionality is similar to a selection sort
+            swap(data[i], data[j]);                                 // Calls our secondary swap function
+            j++;
         }
     }
-    swap(data[i+1], data[high]);
-    return (i+1);
+    swap(data[j], data[high]);                                      // Then at the end of the partition swap the pivot and last element
+    return j;
 }
 
+/* A small swap function that makes the partition code look nicer.
+ *
+ * O(1) runtime.
+ *
+ */
+
 void swap(int *y, int *z) {
-    int x;
-    x = *y;
+    int temp;
+    temp = *y;
     *y = *z;
-    *z = x;
+    *z = temp;
 }

@@ -28,9 +28,9 @@ void *findElement(SET *sp, void *elt);
 
 void *getElements(SET *sp);
 
-void quickSort(SET *sp, void **array, int low, int high);
+void quickSort(void **array, int low, int high, int(*compare)());
 
-int partition(SET *sp, void **array, int low, int high);
+int partition(void **array, int low, int high, int(*compare)());
 
 void swap(int *y, int *z);
 
