@@ -21,7 +21,8 @@ MATH
 |   \---
 |   \---
 |---MATH 178
-|   \---
+|   \---Homework 1-15
+|   \---Homework Problems
 |---MATH 51
 |   \---Homework 1-20
 \
