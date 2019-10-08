@@ -16,5 +16,7 @@ COEN
 |---COEN 21
 |   \---Homework
 |   \---Prelabs
+|---COEN 146
+|   \---Labs 1-5
 \
 ```
