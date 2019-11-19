@@ -6,8 +6,7 @@
 // This program implements a server that accepts connection from a client and copies the received bytes to a file
 //
 // The input arguments are as follows:
-// argv[1]: Sever's port number
-
+// argv[1]: Server's port number
 
 
 #include <sys/socket.h>
@@ -21,53 +20,45 @@
 #include <sys/types.h>
 
 
-int main (int argc, char *argv[])
-{
-    char    message[10] = "received!";  // message to be sent to the client when the destination file name is received
-    int     net_bytes_read;             // numer of bytes received over socket
-    int     socket_fd = 0;              // socket descriptor
-    int     connection_fd = 0;          // new connection descriptor
-    struct  sockaddr_in serv_addr;      // Address format structure
-    char    net_buff[1024];             // buffer to hold characters read from socket
-    FILE    *dest_file;                 // pointer to the file that will include the received bytes over socket
+int main (int argc, char *argv[]) {
+    char    message[10] = "received!";                                          // Message upon receiving file name
+    int     net_bytes_read;
+    int     socket_fd = 0;             
+    int     connection_fd = 0;         
+    struct  sockaddr_in serv_addr;     
+    char    net_buff[1024];
+    FILE    *dest_file;                                                         // File pointer to write to destination file
     int i;
-    char filename[256];
+    char filename[256];                                                         // File name buffer
 
-    if (argc < 2) // Note: the name of the program is counted as an argument
-    {
+    if (argc < 2) {                                                             // Name of executable file and port number
         printf ("Port number not specified!\n");
         return 1;
     }
 
-	serv_addr.sin_family = AF_INET; //IPv4
-	serv_addr.sin_addr.s_addr = htonl(INADDR_ANY); //Bind to all interfaces. Use host to network.
-	serv_addr.sin_port = htons(atoi(argv[1]));	//Assign the port number
+    serv_addr.sin_family = AF_INET;                                             // IPv4
+    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);                              // Bind to all interfaces. Use host to network.
+    serv_addr.sin_port = htons(atoi(argv[1]));                                  // Set port number from argument
 
-	socket_fd = socket(AF_INET, SOCK_STREAM, 0);	//create socket
-	bind(socket_fd,(const struct sockaddr*)&serv_addr, sizeof(serv_addr));	//bind a socket
-	listen(socket_fd, 10);	//listen to the socket
+    socket_fd = socket(AF_INET, SOCK_STREAM, 0);                                // Create socket
+    bind(socket_fd,(const struct sockaddr*)&serv_addr, sizeof(serv_addr));	// Bind socket
+    listen(socket_fd, 10);	                                                // Listen to open receive
+
     
-	
-	connection_fd = accept(socket_fd,(struct sockaddr*)NULL, NULL);	//create connection
+    connection_fd = accept(socket_fd,(struct sockaddr*)NULL, NULL);	        // Accept and open connection in socket
 
-	read(connection_fd, filename, sizeof(filename));
+    read(connection_fd, filename, sizeof(filename));                            // Read in the name of the source file
 
-	printf("%s\n", filename);
-	dest_file = fopen(filename, "wb");
-	printf("%s\n", message);
+    dest_file = fopen(filename, "wb");                                          // Open destination file for writing from source
+    printf("%s\n", message);                                                    // Print we have received source file name
 
-	while((i = read(connection_fd, net_buff, sizeof(net_buff))) >0){	//copy file
-		printf("%s\n", net_buff);
-		fwrite(net_buff, sizeof(char), i, dest_file);
-	}
+    while((i = read(connection_fd, net_buff, sizeof(net_buff))) >0) {           // Loop to copy bits from source file contents
+            fwrite(net_buff, sizeof(char), i, dest_file);                       // Writing to our destination file from buffer
+    }
 
-	close(connection_fd);
-	fclose(dest_file);	
-	
-	return 0;
-	//accept(socket_fd, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
-
-      
+    close(connection_fd);                                                       // Close our connection
+    fclose(dest_file);	                                                        // Close the file pointer
     
+    return 0;
+
 }
-
