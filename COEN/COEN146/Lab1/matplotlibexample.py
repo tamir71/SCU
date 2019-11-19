@@ -10,7 +10,7 @@ plt.plot(x,y) #make sure that the x and the y list contains same number of eleme
 
 #xlabel() and ylabel() functions helps in renameing the titles of x and y axis
 plt.xlabel('Step (1 mb/step)')
-plt.ylabel('CPU Time Used (mb)')
+plt.ylabel('CPU Time Used (CPU Clock Time)')
 
 #includes the title of graph using title() function
 plt.title('CPU time used per step')
