@@ -8,15 +8,15 @@ COEN
 +---COEN 11
 |   \---Labs 1-10
 |   \---Homework and Tests
-|---COEN 12
++---COEN 12
 |   \---Labs 1-6
 |   \---Term Project
-|---COEN 20
++---COEN 146
+|   \---Labs 1-7
++---COEN 20
 |   \---Labs 1-5
-|---COEN 21
++---COEN 21
 |   \---Homework
 |   \---Prelabs
-|---COEN 146
-|   \---Labs 1-5
 \
 ```

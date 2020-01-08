@@ -8,15 +8,22 @@ COEN
 +---COEN 11
 |   \---Labs 1-10
 |   \---Homework and Tests
-|---COEN 12
++---COEN 12
 |   \---Labs 1-6
 |   \---Term Project
-|---COEN 20
-|   \---Labs 1-5
-|---COEN 21
++---COEN 146
+|   \---Labs 1-7
++---COEN 20
+|   \---Labs 0-9
++---COEN 21
 |   \---Homework
 |   \---Prelabs
 \
+
+ELEN
++---ELEN 50
+|   \---Homework 1-4
+|   \---Labs 0-5 & Project 1-2
 
 MATH
 +---AMTH 108
