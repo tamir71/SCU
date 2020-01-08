@@ -24,15 +24,16 @@ ELEN
 +---ELEN 50
 |   \---Homework 1-4
 |   \---Labs 0-5 & Project 1-2
+\
 
 MATH
 +---AMTH 108
 |   \---
 |   \---
-|---MATH 178
++---MATH 178
 |   \---Homework 1-15
 |   \---Homework Problems
-|---MATH 51
++---MATH 51
 |   \---Homework 1-20
 \
 
