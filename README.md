@@ -30,8 +30,8 @@ ELEN
 
 MATH
 +---AMTH 108
-|   \---
-|   \---
+|   \---Homework
+|   \---Final Stats Project
 +---MATH 178
 |   \---Homework 1-15
 |   \---Homework Problems
