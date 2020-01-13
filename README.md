@@ -13,6 +13,8 @@ COEN
 |   \---Term Project
 +---COEN 146
 |   \---Labs 1-7
++---COEN 177
+|   \---Labs 1-10
 +---COEN 20
 |   \---Labs 0-9
 +---COEN 21
