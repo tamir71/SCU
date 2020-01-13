@@ -1,0 +1,17 @@
+# General Observations
+
+(1) echo = console print
+(2) To set a variable, you need to use equal (=) immediately after, e.g. var="name"
+(3) Use $ to reference a variable
+(4) if ends with fi
+(5) while/for ends with done
+(6) '` `' indicates running a shell command
+(7) #!/bin/sh is kind of calling #include <stdio.h>/<iostream>. It tells computer that we're using bash/shell-script
+(8) | is a pipe that allows one more command to be run, and the output of the first to input into the second command.
+
+# Rectangle.sh
+(9) To calculate (integer) multiplication, use `expr $x \* $y`
+(10) Read is basically a scanf for C/C++, and automatically puts into variable
+
+# Circle.sh
+(11) To use floating point multiplication, use `expr $x \* $y | bc`
