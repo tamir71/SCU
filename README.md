@@ -15,6 +15,7 @@ COEN
 |   \---Labs 1-7
 +---COEN 177
 |   \---Labs 1-10
+|   \---Notes
 +---COEN 20
 |   \---Labs 0-9
 +---COEN 21
