@@ -1,0 +1,75 @@
+### Lecture 3
+
+1. Describe how interrupts, signals, and system calls are handled in the kernel.
+
+Interrupts, signals, and calls are all handled by their own type of handler (interrupt handler, signal handler, call handler). When it changes from user to kernel mode, all of the registers on the interrupt/signal/call stack is moved over to the handler stack, then the code is run, and then the PC returns to the original location and the handler stack is popped.
+
+2. Describe what happens before, during, and after the interrupt handler.
+
+When an interrupt is located, it calls the interrupt handler, and the interrupt handler allows the CPU to go from user mode to kernel mode. The OS then preserves the state of the CPU by storing registers and the program counter. At this point, the interrupt handler checks what kind of interrupt is being handled, masks the interrupt handler, and runs the required code. Once the code is run, the interrupt stack pops back registers to the user stack.
+
+3. Describe how a virtual machine operates.
+
+You can run a virtual machine that acts like a different operating system (kernel) over your own OS (kernel). It will be run as a user-level application, and has its own permissions, privileges, etc. It will need to be able to talk to the host kernel as a guest kernel.
+
+4. What happens when a process is created?
+
+When a process is created, it creates and initializes the process control block, creates a new address space, and initializes it with the parent's contents and inherit context. Then it tells the scheduler that a new process is ready to run.
+
+5. Define parent/child process synchronization.
+
+The child can share all, some, or none of the parent's resources. The child can run at the same time, or first complete before the parent. In terms of address space, the child can be a duplicate of the parent, or the child can have a program loaded into it.
+
+6. Define a zombie and an orphan process.
+
+When a child process is inactive, it has no code to run, or it has finished running its code, and it still maintains a spot in the parent's process table, it is a zombie process. An orphan process is when the parent process doesn't exist anymore, if it got terminated before the child was terminated.
+
+7. How does a child process execute in a different environment (i.e. context changed)?
+
+If you call exec(), you can make a child process change context, such as running a different lines of code or move under a new program. It will still maintain its PID, and its parent process table, but can be in a different environment.
+
+8. Define a thread and how to create a thread.
+
+A thread is like a lightweight process, and it is easier to be created than a process. Multiple threads can be created under the same process, which share code, data, handlers, IDs, etc. However, each thread have different thread IDs, registers, stacks, etc. This can imitate "parallel processes", but is a lot more lightweight than processes. Creating a thread can be run through the pthread.h library, and calling pthread_create, and initializing a thread.
+
+### Assignment 1
+
+1. An example of an operating system as an illusionist is:
+
+Supporting multiple users simultaneously, so that each appears to be able to run programs at exactly the same time, as if each user has the computer to his or herself.
+
+2. In operating system terms, security is the protection of a computer's operations so that a malicious attacker cannot perform unauthorized operations, while privacy is the protection of user data from unauthorized access.
+
+True
+
+3. The Application Programming Interface (API) is the system call interface, while the Abstract Virtual Machine (AVM) is the entire interface provided to applications: the system call API as well as the virtual memory abstraction, exceptions, and interrupt delivery.
+
+True.
+
+4. An open operating system is one whose source code is available to the public for modification and reuse, or a system whose application interface is defined by a public standards process. A proprietary operating system is one whose source code is confidential and whose application interface is controlled by one company. Examples are:
+
+Linux OS is open, Windows is proprietary
+
+5. The Direct Memory Access (DMA) is a Hardware I/O device transfer data directly into/out of main memory at a location specified by the operating system.
+
+True
+
+6. How should an operating system support communication between applications?
+
+Through the file system, through messages passed between applications, through regions of memory shared between the applications
+
+7. When an user process is interrupted or causes a processor exception, the x86 hardware switches the stack pointer to a kernel stack, before saving the current process state. This is because:
+
+The user stack pointer may be corrupted. Switching to the kernel stack ensures that htere is a valid memory region to store the process state.
+
+8. Which of the following is a good recommendation for a mechanism in Operating Systems?
+
+User-level access to physical memory is not recommended so it will not allow a process to overwrite data structures in another process.
+
+9. User-mode to kernel mode transfer is possible with:
+
+System calls, interrupts, exceptions.
+
+10. A hardware designer argues that there is now enough on-chip transistors to provide 1024 integer registers and 512 floating point registers. As a result, the compiler should almost never need to store anything on the stack. As an operating system guru, what is the effect on the operating system of having a large amount of registers?
+
+A larger register set increases the cost of system call, interrupt, and exception handling, as all processor state must be saved.
