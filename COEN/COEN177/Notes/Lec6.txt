@@ -27,7 +27,7 @@ Critical Section: The critical section is the piece of code that only one thread
 
 5. What algorithms and primitives can be used to solve the critical section problem?
 
-Peterson's Algorithm allows for both mutual exclusion and progression. Other primatives that work are hardware: load/store, disable interrupts, TestAndSet, ComparaeAndSwap; or software: locks, shared objects, semaphore, and monitors.
+Peterson's Algorithm allows for both mutual exclusion and progression. Other primatives that work are hardware: load/store, disable interrupts, TestAndSet, CompareAndSwap; or software: locks, shared objects, semaphore, and monitors.
 
 
 1. What was the significant concept/ idea you learned in today's lecture?
