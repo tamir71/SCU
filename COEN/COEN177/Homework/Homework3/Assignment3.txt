@@ -1,0 +1,15 @@
+Question 1:
+    UPLOAD: Assignment3_1.c
+
+    One for main, it finishes with x = 20. One for the first child of main, it finishes with x = 10. One for the second child of main, it finishes with x = 15.
+
+Question 2:
+Running v01: it prints out "Hello from thread [random value] with iteration i. Then somewhere in there it starts outputting "Thread i returned". The "... with iteration i" is not always the same. They can be in order, but sometimes it is jumbled up. This is because the CPU scheduler decides when to run each thread concurrently (aka in order). This is the same for v02 code. Only because I run ubuntu through WSL (ubuntu virtual kernel on windows), it reserves cores just for that process. If I was running this with other thread/process heavy programs, then the CPU scheduler would have to move from that program to these thread programs, and there would be more variance.
+
+Question 3:
+
+
+Question 4:
+    UPLOAD: Assignment3_2.c
+
+The program runs, and the first thread runs very very quickly. The second thread responds quickly to any input I give it (including ENTER). By the time I can spam ENTER, there are already multiple periods that print. Also, periods `.` only print when I give it an input, or it times out away from the second thread. Because the first thread runs much much faster than the second thread, it appears that I can not make the console print out multiple "Thank you for your input" strings before a period appears.

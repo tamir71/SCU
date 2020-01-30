@@ -1,0 +1,51 @@
+### Lecture 5
+
+1. What are the main differences between threads and processes?
+
+A process is the program's main instruction sequence, and a thread is a lightweight version of a process. Threads are able to share resources with other threads, and is easier to create and close.
+
+2. Why threads and their importance in concurrency?
+
+Concurrency is the ability to run multiple activities at the same time, and this is easier to do with threads, because of their lightweight property. You can let multiple threads execute at the same time.
+
+3. What are the main benefits of using threads?
+
+Each smaller task can be given to a thread, and you can run multiple threads running at the same time. These threads can share the same resources (memory, properties, etc.). It will have better performance, more memory efficient, and can run in the background.
+
+4. What is the difference between concurrency and parallelism and benefits of using multicore/multiprocessor systems?
+
+Multicore/multiprocessor systems lets us divide tasks (needs to be loosely coupled), load balancing, splitting data analysis, testing/debugging on multiple processors. Parallelism is like running multiple independent tasks across phyiscal cores simultanesouly, while concurrency is an abstraction that allows us to think we're running multiple tasks on a single core at the same time.
+
+5. List of multithreaded applications
+
+Wristwatches, Web servers, Planes, databases, elevators, medical systems, OS kernels, etc.
+
+6. Context switch and thread control block.
+
+Context switches allow us to support multiple threads, where we can switch between different threads, pausing and resuming to another thread. The current thread's TCB (thread control block), which contains the registers and execution stack, gets saved and restores the next thread's TCB and stack.
+
+7. Thread operations and thread API.
+
+pthread_create  -   Creates a new thread
+pthread_join    -   From the parent, we run new thread and wait for it to exit, then return
+pthread_self    -   Gets the thread's ID
+pthread_exit    -   Exit teh thread and clean up memory used
+pthread_yield   -   Pushes the thread to the end of the run queue
+
+8. Thread data structures and lifecycle.
+
+Each thread has their own thread state and data structures. Each thread will share the original code, global variables, and the CPU heap. However, each thread has their own thread control block (task instsructions), their own registers, and their own stack. Each thread state machine can have 5 states: init, ready, waiting, running, and finished.
+
+
+1. What was the signifiance concept/idea you learned in today's lecture?
+
+The differences between concurrency and parallelism with multiple threads/processes.
+
+2. What was the most confusing point of today's lecture?
+
+The context switching between threads, how the system saves each TCB and thread state.
+
+3. What idea/concept presented in the today's lecture was the most complex?
+
+The context switching between threads, how the system saves each TCB and thread state.
+

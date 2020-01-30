@@ -1,0 +1,53 @@
+1. Why is synchronization important?
+
+Synchronization allows for shared data, improves computation speed, is modular, and is more convenient than running several independent threads.
+
+2. How would you implement synchronization? Discuss the three approaches.
+
+To solve the critical region problem: programmer's approach (no OS mechanisms), hardware solution (use machine instructions for locking), or use OS and programming language solutions (using high-level APIs).
+
+3. What is Peterson's algorithm and Bakery algorithm?
+
+Peterson's algorithm is a mechanism using both a "turn" and a "flag", which says, "you can run, and I am waiting" and loops until the other hits its critical section. Peterson's is typically used for two threads, while the Bakery algorithm is the general case for n threads.
+
+4. Describe a programmer's approach to solving the synchronization problem? What are the pros and cons?
+
+Using a double-sided (or multisided) while loop, that checks if the other thread is ready/waiting, then this provides for mutual exclusion, and progress and bounded waiting. However, this is difficult to check within the code, since there could be a scenario that we haven't thought of. This solution also involves a lot of busy waiting, which is a waste of system resources.
+
+5. How can a hardware solution be implemented for solving the synchronization problem? What are the pros and cons?
+
+Hardware solutions are usually:
+(1) Load/store
+(2) TestAndSet()
+(3) ComapreAndSwap()
+(4) Interrupt Enable/Disable
+These hardware solutions are easier to discern if they are a viable solution or not. These can be used by multiple processors sharing mmain memory. However, again there is busy waiting and uses complex application solutions. Some thread/process starvation and deadlocks are also possible.
+
+6. What is the main use of interrupt enable/disable?
+
+We can avoid context switching, which is the main reason why programmers and hardware approaches have issues. Therefore, we can avoid events between threads/processes running and switching in the middle.
+
+7. How is a high-level API used to solve the synchronization problem? List a number of APIs.
+
+We can use high level APIs, which are solutions to these issues that are offered by the OS or high level programming languages. These APIs can be semaphores, locks, and condition variables.
+
+8. Define a semaphore and how it can be implemented.
+
+A semaphore is a general-purpose lock that is built into Unix systems. The semaphore is an integer variable, which can guarantee atomic and mutual exlusive operations. There are two operations with the Semaphore s, waiting andsignaling.
+
+9. Describe how semaphores can be used to solve the produce-consumer classical problem.
+
+The producer-consumer problem is when the producer and consumer both share a buffer. While the buffer is full, the producer waits, while the buffer is empty the consumer waits. We can use a sempahore lock on the number of items, and we can wait() on the producer when the buffer is full and run signal() on the consumer, and vice versa when the buffer is empty.
+
+
+1. What was the significant concept/idea you learned in today's lecture?
+
+The most significant ideas were the three approaches and their implementations, and their pros and cons.
+
+2. What was the most confusing point of today's lecture?
+
+The most confusing part was when we were discussing the first and second algorithm for the programmer's approach.
+
+3. What idea/concept presented in today's lecture was the most complex?
+
+The most complex was the introduction of semaphores and its code while it works with multiple threads.

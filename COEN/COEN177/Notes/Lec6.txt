@@ -1,0 +1,45 @@
+1. Explain in details what triggers a thread context switch?
+
+There are two reasons why a thread context switch would be called. Voluntary and involuntary.
+Voluntary switching is from internal events: thread_yield, thread_join, and thread_exit. Involuntary is external events: interrupt/exception, other thread with higher priority.
+
+
+2. What happens during the context switch? Is this an overhead?
+
+We would have to save the thread's registers and switch to a new stack and a new thread. We also stop allowing interrupts during the context switch is occurring. The context switcher either (1) waits for a new ready thread, (2) goes to the next ready thread, or (3) uses the scheduler to choose any of the multiple threads. There is a time overhead because the context switcher needs time to process these three options.
+
+
+3. As program developer, you need to make sure that your multi-threaded program works in any order the threads are scheduled on the CPU. Why and How? in cases where you have independent threads and cooperating threads!
+
+To work with multi-threaded programs, you need to work with independent threads and cooperating threads. The difference in when to use independent and cooperating threads is if you have tasks that can be run independently or not. Independent threads don't share threads with each other, is deterministic, reproducible, and used when scheduling order does not matter. Cooperating threads is more tricky, because of the shared state, depending on how the scheduler runs between threads, it will change the output of the program and will become non-deterministic and non-reproducible.
+
+
+4. Define the following terms: Synchronization, Race Condition, Mutual Exclusion and Critical Section
+
+Synchronization: Using atomic operations to ensure cooperation between threads. Atomic operations are operations that run until it is complete.
+
+Race Condition: Output of a concurrent program depends on the order of operations between threads.
+
+Mutual Exclusion: It ensures that only one thread does one task at a time. If another thread wishes to run, it will exclude it from running.
+
+Critical Section: The critical section is the piece of code that only one thread executes at a time.
+
+
+5. What algorithms and primitives can be used to solve the critical section problem?
+
+Peterson's Algorithm allows for both mutual exclusion and progression. Other primatives that work are hardware: load/store, disable interrupts, TestAndSet, ComparaeAndSwap; or software: locks, shared objects, semaphore, and monitors.
+
+
+1. What was the significant concept/ idea you learned in today's lecture?
+
+How to synchronize threads using different methods. Also, the three properties: mutual exclusion, progress, and bounded waiting.
+
+
+2. What was the most confusing point of today’s lecture?
+
+The analogy examples with leaving notes for milk (locking).
+
+
+3. What idea/ concept presented in the today's lecture was the most complex?
+
+The examples with leaving notes for milk.

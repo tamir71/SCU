@@ -1,0 +1,47 @@
+### Notes ./first
+
+From the source code, there is no check to make sure there is a command line parameter passed. It was added into the second revision of the code.
+
+### Notes ./second
+
+Running the command with ./second 3000 delay, there were 16 times where either parent or child was run two times in a row (duplicate lines, non-alternating) before the other.
+
+Running the command with ./second 500 delay, there was only 3 times with duplicate lines, but child finished earlier than the parent, resulting in parent running THREE times in a row at the end (97, 98, 99).
+
+Running the command with ./second 5000 delay, parent started first, and finished last. There was only 1 duplicated line (child).
+
+### Notes ./seven
+
+Creating 7 processes in a complete binary tree format looks like:
+           o
+          / \
+         o   o
+        / \ / \
+       o  o o  o
+
+Line-by-line the processes were created in order: p, l, ll, lr, r, rl, rr
+ 
+From output of 10 trials and printing from each process: (p = parent, l = left, r = right)
+    p, ll, l, lr, rl, r, rr
+    p, ll, l, lr, r, rr, rl
+    p, ll, l, lr, rl, r, rr
+    p, ll, rl, lr, r, l, rr
+    p, ll, rl, l, r, lr, rr
+    p, ll, rl, lr, r, l, rr
+    p, ll, l, lr, r, rl, rr
+    p, ll, rl, lr, l, r, rr
+    p, ll, l, rl, lr, r, rr
+    p, ll, rl, l, lr, r, rr
+
+We can see from the outputs that they *typically* follow the order, p, ll, l, lr, rl, r, rr
+This ordering is parent, then followed by left-parent-right.
+
+### Notes ./thread
+
+We create using pthread_create() and input parameters as: thread ID, any flag, function to run, and single parameter for that function.
+
+We then actually run the code using pthread_join. Joining the two threads at the same time imitates creating the two processes and running them at the same time. They also appear to clump randomly, based on the CPU scheduler.
+
+### Notes ./third
+
+Here, we can change context for the child process using execlg() to run a different command, here we use `ls`. Then the parent waits for the child to finish then exits the child, and then finishes to program.

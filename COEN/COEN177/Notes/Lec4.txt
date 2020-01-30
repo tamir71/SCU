@@ -1,0 +1,23 @@
+### Lecture 4
+
+1. What system calls are used to handle files
+
+open() used to open files for reading/writing.
+read() or fread() to read from the file.
+write() or fprintf() to write to the file.
+
+2. Describe the three mechanisms for inter-process communication and what system calls are used for each.
+
+On the same host, we have pipes, shared memory, and message queues. Pipes allow for unidirectional data transfer. The parent forks two times, creating the source environment and the destination environment. We use pipe() and redirect using dup2(). Shared memory creates a shared segment of memory using shmget(), and the first process needs to initialize with IPC_CREAT, and the other can attach to that created segment using shmat(). Message queues are created by one of the processes using msgget() with IPC_CREAT, and the other connects to it. Then they can send and receive messages using msgsnd() and msgrcv(). 
+
+3. Describe the use of signal() system code.
+
+signal() is used to send a notification of a certain event. Inside the signal() code, we need to handle types of signal (e.g. SIGINT), and run a function for that signal type.
+
+4. Define concurrency.
+
+Concurrency is a method of how the operating system handles multiple processes, events, etc. at the same time. Threads can help abstract the concurrency process. Concurrency can exist with multiple socket connections, parallel programs, etc.
+
+5. Define thread abstraction.
+
+A thread is a lightweight process, which typically only has one use or one functionality, and is much faster to be created and can run concurrently with other threads. With thread abstraction, threads can execute their functions with variable speed, to follow the schduler. It creates an abstraction, because to the user, code might be running at the same time, but under the user-level, threads can be running at different speeds and finish at different times, abstracting execution.
