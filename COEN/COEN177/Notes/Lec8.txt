@@ -1,0 +1,81 @@
+1. Describe what Linux API are used to manage critical sections with semaphores?
+
+wait() and signal(): Uses a system of incrementing and decrementing the semaphore as the locking mechanism.
+mutex_lock() and mutex_unlock(): Uses a shared variable lock, which is locked and unlocked.
+
+
+2. Define what a spin lock is.
+
+A spinlock is a lock, where the CPU is put into a wait loop until the lock becomes free.
+
+
+3. What is the difference between a conditional variable and a semaphore?
+
+Conditional variables can be a way that one thread can wait for the other, through a synchronized object that lets a thread wait for a changed shared state that is also protected by a lock.
+
+
+4. Describe implementing a lock with condition variables.
+
+i)    Decompose problem into what objects/modules you have
+ii)   Identify what objects can be shared among multiple threads
+iii)  Add locks to shared objects/modules
+iv)   Identify if we need conditional variables
+v)    Check if we need to add wait loops
+vi)   Add signal calls to wake threads up
+vii)  Always leave shared state variables in a consistent state
+
+
+5. Why are semaphores considered harmful?
+
+It can't completely avoid busy waiting, and it is tricky to usem since wait() and signal() is difficult to keep track of. If we don't use properly, one bad thread can cause deadlocks and starvation. Even if we use properly, we will still have to try to avoid deadlocks and starvation.
+
+
+6. What are the pros and cons of using high-level API in solving the critical section problem?
+
+This is applicable for single to multiprocess programs. Its simpler to verify the solution.
+There is busy waiting, and possibility of starvation and deadlocks.
+
+
+7. Explain how to implement lock/semaphore on multiprocessor systems?
+
+On multiprocessor systems, we have different ways we can implement locking with multiple processors:
+i)   Have a compiler that dedicates a register to switch between threads
+ii)  Use a per-processor register that is available to choose between threads
+iii) Fixed-size stacks: use a pointer that points to the TCB at the bottom of its stack
+
+
+8. Describe how to manage multi-object programs.
+
+If we are looking to synchronize with multiple objects, we will need to make sure each object has their own locks and condition variables. We would have to be wary of running many concurrent threads on multiprocessor systems with these multiple objects.
+
+
+9. Why is a program with concurrent threads still have poor performance on multiprocessor systems and how can this be improved with caching?
+
+Creating threads creates overhead, and there is competition for the lock, where only one thread can run at a time. Shared data that is protected by a lock may just move back and forth between the cores. There is also an issue of false sharing, where there is communication between threads for data that is not shared.
+
+Multiple ways of using the cache allows for improvements: write back cache coherence, directory-based cache coherence, and fine-grained locking/per-processor data structures/ownership or staged architecture for reducing lock contention.
+
+
+10. Write C Programs for the traditional synchronization programs:
+(a) Producer/Consumer
+// Page 34 on Lecture 7 slides
+(b) Readers/Writers
+// Page 33 on Lecture 8 slides
+(c) Dining Philosophers
+// Page 34 on Lecture 8 slides
+
+
+1. What was the significant concept/idea you learned in today's lecture?
+
+The synchronization problems: reader-writers, dining-philosophers, and other examples.
+
+
+2. What was the most confusing point of today's lecture?
+
+How caching affects synchronization.
+
+
+3. What idea/concept presented today was the most complex?
+
+The classical synchronization problems.
+

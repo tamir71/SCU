@@ -1,0 +1,63 @@
+1. Which of the following would be an acceptable signal handling scheme for a multithreaded program?
+
+All of of the following: deliver the signal to the thread to which the signal applies, deliver the signal to every thread in the process, and deliver the signal to only certain threads in the process.
+
+
+2. In which of the following programming examples, multithreading provides better performance than a single-threaded solution?
+
+All of the following: a web server that services ecah request in a separate thread, a parallelized application such as matrix multiplication where various parts of the matrix can be worked on in parallel, and an interactive GUI program such as a debugger where one thread is used to monitor user input, another thread represents the running application, and a third thread monitors performance.
+
+
+3. The multithreaded web server allows to create multiple concurrent running thread, each performing the same task, but on different data.
+
+True.
+
+
+4. Context switching between kernel threads typically requires saving the value of the CPU registers from the thread being switched out and restoring the CPU registers of the new thread being scheduled.
+
+True.
+
+
+5. Because a thread is smaller than a process, thread creation typically uses fewer resources than process creation. Creating a process requires allocating a process control block (PCB), a rather large data structure. The PCB includes a memory map, a list of open files, and environment variables. Allocating and managing the memory map is typically the most time-consuming activity. Creating either a user thread or a kernel thread involves allocating a small data structure to hold a register set, stack, and priority.
+
+True.
+
+
+6. Which of the following refers to where a process is accessing/updating shared data.
+
+Critical section.
+
+
+7. A pre-emptive kernel is safe from race conditions on kernel data structures.
+
+False.
+
+
+8. In Peterson's solution, which of the following variables indicate if a thread is ready to enter its critical section.
+
+flag[i]
+
+
+9. Race conditions are prevented by requiring that critical regions be protected by locks.
+
+True.
+
+
+10. What is the correct order of operations for protecting a critical section using mutex semaphore?
+
+signal() followed by release().
+
+
+11. Programmer's approach to synchronization such as Peterson's algorithm does not involve busy waiting.
+
+False.
+
+
+12. How many philosophers may eat simultaneously in the Dining Philosophers problem with 5 philosophers?
+
+Two philosophers (used 4/5 forks).
+
+
+13. The first known correct software solution to the critical-section problem for n threads with a lower bound on waiting of n − 1 turns was presented by Eisenberg and McGuire. Demonstrate how this solution solves the critical section problem by applying it for an n-threaded application.
+
+    Upload [assignment4.c]

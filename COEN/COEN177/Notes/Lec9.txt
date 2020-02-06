@@ -1,0 +1,45 @@
+1. Describe the difference between a deadlock and a starvation?
+
+Starvation is when one thread is just waiting indefinitely, while deadlocks are when theres a circular waiting among all threads for resources. Deadlocks lead to starvation, but starvations do not lead to deadlocks.
+
+
+2. What are the four conditions that may cause a deadlock to arise?
+
+i)    Mutual exclusion
+ii)   Hold and Wait
+iii)  No preemption
+iv)   Circular wait
+
+
+3. List the methods used to handle deadlocks.
+
+To ensure that a system will never enter a deadlock, we need to monitor the locks (prevention algorithm) or selectively deny those that might lead to deadlocks (avoidance algorithm).
+
+Once the system enters a deadlock, and then we can recover, which will require a deadlock detection algorithm.
+
+Or we can just ignore the problem and just reset whenever a deadlock occurs (low-power resource programs). This is what most operating systems, including UNIX/Linux OS's do.
+
+
+4. How does deadlock prevention work?
+
+We need to limit anything that might lead to deadlocks: provide enough resources, eliminate waiting while holding, and eliminate circular waiting
+
+
+5. Define a safe state and how it can be detected for systems with single instance resources?
+
+A safe state is if there is a safe sequence of all processes, which won't lead to deadlocks. This can be detected using deadlock detection algorithms. This can also be handled with data structures that are based on processes, and maximum resource needs vs allocated matrices.
+
+
+1. What was the significant concept/idea you learned in today's lecture?
+
+The idea of how deadlocks occur, and how to prevent/avoid deadlocks.
+
+
+2. What was the most confusing point of today's lecture?
+
+The detection algorithms.
+
+
+3. What idea/concept presented in today's lecture was the most complex?
+
+The graphs about the resource-allocation graphs.
