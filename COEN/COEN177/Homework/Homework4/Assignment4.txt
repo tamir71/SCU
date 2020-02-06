@@ -45,7 +45,7 @@ True.
 
 10. What is the correct order of operations for protecting a critical section using mutex semaphore?
 
-signal() followed by release().
+wait() followed by signal().
 
 
 11. Programmer's approach to synchronization such as Peterson's algorithm does not involve busy waiting.
