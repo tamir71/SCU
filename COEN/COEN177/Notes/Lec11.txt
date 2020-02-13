@@ -1,0 +1,25 @@
+1. What are the pros and cons of each of the CPU uniprocessor scheduling (FIFO, RR, SJF, SRTF, priority)?
+
+FIFO:       Simple and easy to implement. Convoy effect can occur, leading to increased time.
+RR:         Better for shorter jobs and is more fair. Context-switching can lead to more time for longer jobs.
+SJF:        Simple to implement. Avoids convoy effect, but is based on CPU burst, which is difficult to know.
+SRTF:       SRTF is optimal on average response time. However, there is starvation if there are many small jobs. SRTF is also unfair and it is difficult to know CPU burst time..
+Priority:   Most flexible option, best of all worlds. Most fair option, but needs good quanta on priority.
+
+2. Why realtime CPU scheduling should follow a different policy? What criteria are used?
+
+The above scheduling methods were under the assumption that there were no critical real-time processes. Some processes must be completed within a deadline. Therefore, the best policy is a preemptive priority-based scheduling.
+
+3. What is the difference between RM and EDF?
+
+RM is Rate Monotonic scheduling, which creates a priority based on the inverse of its period. Therefore shorter periods have higher priority, and longer periods have lower priorty.
+EDF is Earliest Deadline First scheduling, which prioritizes the shorter deadlines first.
+
+
+1. What was the significant concept/idea you learned in today's lecture?
+
+Running through the different ways priority scheduling can be ran.
+
+2. What was the most confusing point of today's lecture?
+
+Estimating CPU burst times, and the equations.
