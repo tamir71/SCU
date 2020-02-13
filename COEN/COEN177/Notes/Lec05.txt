@@ -29,7 +29,7 @@ Context switches allow us to support multiple threads, where we can switch betwe
 pthread_create  -   Creates a new thread
 pthread_join    -   From the parent, we run new thread and wait for it to exit, then return
 pthread_self    -   Gets the thread's ID
-pthread_exit    -   Exit teh thread and clean up memory used
+pthread_exit    -   Exit the thread and clean up memory used
 pthread_yield   -   Pushes the thread to the end of the run queue
 
 8. Thread data structures and lifecycle.

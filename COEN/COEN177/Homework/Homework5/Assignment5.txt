@@ -1,0 +1,52 @@
+1. Deadlock occurs when every thread in a set is blocked waiting for an event that can be caused by only another thread in the set.
+
+True.
+
+2. A cycle in a resource-allocation graph is:
+
+A necessary and sufficient condition for a deadlock in the case that each resource has exactly one instance.
+
+3. To handle deadlocks, operating systems most often:
+
+Pretend that deadlocks never occur.
+
+4. Both deadlock prevention and deadlock avoidance techniques ensure that the system will never enter a deadlocked state.
+
+True.
+
+5. Most operating systems choose to ignore deadlocks, because:
+
+All of the following: handling deadlocks is expensive in terms of performance and resources, and deadlocks occur infrequently.
+
+6. Assume there are three resources, R1, R2, and R3, that are each assigned unique integer values 15, 10, and 25, respectively. What is a resource ordering which prevents a circular wait?
+
+R2, R1, then R3
+10 + 15 = 25
+
+7. In deadlock prevention by denying hold-and-wait condition:
+
+All of the following: resource utilization may be low, starvation is possible, and whenever a thread requests a resource, it does not hold any other resources.
+
+8. Suppose there are ten resources available to three processes. At time 0, the following data is collected. The table indicates the process, the maximum number of resources needed by the processes, and the number of resources currently owned by each process. Which of the following correctly characterizes this state?
+
+It is not safe.
+
+9. In a wait-for-graph:
+
+None of the following: a resource may have multiple instances, a deadlock implies the existence of a cycle, but a cycle does not necessarily imply a deadlock, a cycle implies deadlock, but not every deadlock results in a cycle.
+
+10. Consider the following snapshot of a system, then using Banker's algorithm, the system is in a safe state. This is because with Available equal to (1, 5, 2, 0), either thread T0 or T3 could run. Once T3 runs, it releases its resources, which allows all other existing threads to run.
+
+True.
+
+11. For the system in Question 10, if a request from thread T1 arrives for (0, 4, 2, 0), then this can not be granted immediately?
+
+True.
+
+12. Consider the following resource-allocation policy. Requests for and releases of resources are allowed at any time. If a request for resources cannot be satisfied because the resources are not available, then we check any threads that are blocked waiting for resources. If a blocked thread has the desired resources, then these resources are taken away from it and are given to the requesting thread. The vector of resources for which the blocked thread is waiting is increased to include the resources that were taken away. For example, a system has three resource types, and the vector Available is initialized to (4,2,2). If thread T0 asks for (2,2,1), it gets them. If T1 asks for (1,0,1), it gets them. Then, if T0 asks for (0,0,1), it is blocked (resource not available). If T2 now asks for (2,0,0), it gets the available one (1,0,0), as well as one that was allocated to T0 (since T0 is blocked). T0's Allocation vector goes down to (1,2,1), and its Need vector goes up to (1,0,1). In this policy, deadlock can never occur because pre-emption exists.
+
+True.
+
+13. Is it possible to have a deadlock involving only one single-threaded process?
+
+No.

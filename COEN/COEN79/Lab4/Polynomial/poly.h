@@ -146,9 +146,10 @@ namespace coen79_lab4 {
     public:
     	// CONSTANTS
     	static const unsigned int MAXIMUM_DEGREE = 29;
-        
+        static const unsigned int CAPACITY = 30;
+
         // HELPER MEMBER FUNCTIONS
-        void update_current_degree()
+        void update_current_degree();
 
         // CONSTRUCTOR
         polynomial(double c = 0.0, unsigned int exponent = 0);
@@ -170,6 +171,8 @@ namespace coen79_lab4 {
         unsigned int previous_term(unsigned int e) const;
         double operator () (double x) const;
 
+    private:
+        double data[CAPACITY];
     };
 
     // NON-MEMBER BINARY OPERATORS

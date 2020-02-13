@@ -1,0 +1,38 @@
+1. Do you think a deadlock should be a concern in OS, and how to handle it?
+
+In smaller and resource-limited systems, just ignore deadlocks if they are rare enough, and reset system when they happen. In multiprocessing sysetms, we should implement a simpler algorithm for detection, or else we will be using too much resources on deadlock prevention, avoidance, and detection.
+
+2. What is the main difference between Deadlock prevention, avoidance, and detection algorithms?
+
+Deadlock prevention is to release any of these conditions: circular waiting, mutual exclusion, no preemption, holding and waiting.
+Deadlock avoidance requires that there is a priori information to check if theres a safe state or not.
+Deadlock detection is to allow the system to enter the deadlock state and have a recovery method.
+
+3. What do you think would be an important criteria for CPU scheduling?
+
+Response time, completion time, throughput. Minimizing response time and completion time. Maximizing throughput.
+
+4. Briefly describe scheduling policies: FIFO, RR, SJF, SRTF, Priority, and which one do you think is a good mechanism for a generic operating system?
+
+FIFO: First in first out, work in order at front of queue.
+RR: Round robin, similar to how time multiplexing works, each process gets a small unit of CPU time, and run in a loop.
+SJF: Shortest job first, based off of the process' length of its next CPU burst. This is optimal for average waiting time for each process, but finding the length of CPU burst is difficult.
+SRTF: Shortest remaining time first, similar to SJF, but used in preemptive 
+Priority: certain processes have higher priority, which will be completed before others. Priority is the best match, because it is the most flexible, since you can prioritize based on CPU burst time, place in queue, etc.
+
+5. How CPU scheduling is different on real-time and multiprocessor systems?
+
+The above scheduling policies work on single-processor systems. Multiprocessor and real-time scheduling is more complex, because you need to be able to talk between the multiple CPUs (synchronization) but yet still have a scheduler for each CPU core. The multiple processors will need to be run in a symmetric, asymmetric, or have each CPU be independent from each other. Each one has their own difficulties.
+
+
+1. What was the significant concept/idea you learned in today's lecture?
+
+CPU-bound and IO-bound processes.
+
+2. What was the most confusing point in today's lecture?
+
+The differences between the types of scheduling schemas.
+
+3.  What idea/concept presented in today's lecture was the most complex?
+
+The differences between the types of scheduling schemas.
