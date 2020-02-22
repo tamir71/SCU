@@ -1,0 +1,53 @@
+1. Why do we need multiprocessor scheduling and how is it different from uniprocessor and realtime scheduling?
+
+Scheduling with multiple processors is a more complex than uniprocessor scheduling. We can schedule multiple processors in different ways. Symmetric and asymmetric processing.
+
+Realtime is dealt with Rate Monotonic and Earliest Deadline First scheduling, while uniprocessor uses FIFO, RR, SJF, SRTF, Priority, and mixed.
+
+2. What is the difference between affinity and gang scheduling?
+
+Affinity is that a process that has already been running on a certain processor will return to that processor because it has been given affinity. Gang scheduling is when a process is time-sliced across all processors everywhere. This is mostly used with multi-threaded or multi-process programs.
+
+3. Describe Little's Law.
+
+Little's Law states that in a steady state, the number of tasks (N) is given by average throughput (X) and response time (R). Throughput is the rate of task completions, and response time is queuing delay + service time.
+
+N = X * R
+
+4. What is memory management and how is it different on uniprogramming and multiprogramming systems?
+
+Memory is a resource, and the operating system thus must manage and share memory. Uniprocessor can use memory by itself, but multiprogramming must control for shared memory and memory load balancing.
+
+5. What is the difference between a physical address and a virtual address?
+
+Virtual address is what the CPU loads into its memory when running a program, and it gets translated to a phsyical address (RAM/ROM).
+
+6. What is address translation?
+
+Address translation is the conversion of virtual address to physical addresses.
+
+7. What are the methods for memory allocation?
+
+Base and bound, segmentation, paging, fragmentation, and multilevel translation.
+
+8. Define fragmentation.
+
+Free memory is memory that is broken into non contiguous pieces, and we would have to allocate memory based on best-fit or first-fit.
+
+9. What are the pros and cons of the multi-partition allocation method?
+
+Simple, fast, safe, and you can relocate the physical memory without haveing to change between processes.
+A program can accidently overwrite its own code, and it can't share data and it can't resize the memory partition.
+
+10. How is segmentation different from multi-partition?
+
+Segmentation is a contiguous region of virtual memory, which points to different locations of physical memory. This way multi-partition can have holes and noncontiguous memory, but segmentation is one contiguous process.
+
+
+1. What topics or concepts were not clear in today's lecture?
+
+Segment architecture, and how each segment is used.
+
+2. What suggestions do you have for today's lecture, if any?
+
+

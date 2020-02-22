@@ -1,0 +1,30 @@
+### Step 1:
+
+What happens when you run the threadHello.c program. Do you get the same result if you run it multiple times? What if you are also running some other demanding processes when you run this program?
+
+The program prints `Hello from thread i...`, and then prints `Thread i returned`, where Hello is in random order and not unique, and Thread i returned is in order 0 to 20. We don't get the same order and iterations for the "Hello from thread" lines, but "Thread i returned" is always in order 0 to 19.
+
+The function go() has the parameter arg passed as a local variable. Are these variables per-thread or shared state? Where does the compiler store these variables' states?
+
+The parameter arg is per-thread. The compiler stores these states into their thread control blocks, where they have their own variables and instruction set.
+
+The main() has local variable i. Is this variable per-thread or shared state? Where does the compiler store this variable?
+
+The variable i is a shared state between the threads. i is saved in the main global variables, but each one gets passed into threads at varying times.
+
+### Step 2:
+
+Delete the second loop. What are the possible outputs of the program now? Explain.
+
+They are all "Hello from thread i", and i is random and does not need to be unique. The line "Main thread done" can be printed after the threads are completed or can appear near the end.
+
+### Step 3:
+
+We call srand() to create a seed for our rand() calls, which allows us to make different random numbers each time we run the program.
+
+When we call pthread_create, we enter our argument i as (void *)(size_t), which basically makes it an object that makes a local object for each thread, so that we don't use the main()'s i value.
+
+We call pthread_join to make sure each thread finishes before continuing with the main() functions code.
+
+We had to print our values of our matrix values using %.2f for 2 floating decimal points.
+

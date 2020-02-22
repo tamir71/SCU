@@ -1,0 +1,46 @@
+Preliminary Remarks:
+
+Check that the two commands work:
+`$ minix-get-image`
+`$ vmware &`
+
+If these two do not work, then you need to fix your $PATH:
+a. Go to home, `cd ~`
+
+b. Change your bashrc, `vi .bashrc`
+
+c. Copy and paste the following into your bashrc:
+
+d. `export PATH="/usr/lib64/qt-3.3/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/gnu/bin:/opt/misc/linux/bin:/opt/misc/bin:/applications/vmware/15/linux/bin:$PATH`
+
+e. Save and exit out of vi.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Run the commands:
+    `$ setup vmware`
+    `$ minix-get-image`
+    `$ vmware &`
+
+2. This will open the VMWare application.
+    a. Go to Minix3 and click start VM.
+
+3. Login as root, and you can set a password with passwd if you so wish
+
+4. Now we can start file transfer.
+    a. In your virtual machine: `# tcpd ftp /usr/bin/in.ftpd &`
+    b. In your virtual machine: `# ifconfig`, this will give you the IP address that you will FTP into
+    c. In your host machine: `ftp <xxx.xxx.xxx.xxx>` (your IP address)
+
+5. Now that we have setup the ftp server, run all commands on your host machine:
+    a. `$ cd /usr/src/kernel`
+    b. `$ get main.c`
+    c. This will put the main.c onto your host machine's home directory
+    d. Edit your file however you want on your host machine (vi/emacs/tEdit) and save the changes
+    e. Now you can put it back with `$ put main.c`
+
+6. Your changes in main.c should be put back into the kernel folder.
+    a. Now in your virtual machine: `# cd /usr/src`
+    b. `# make world`, this will remake your kernel and will take a minute
+    c. Once it is finished (you can see a blank # afterwards) type in `# reboot`
+    d. You will see your changes in the reboot screen if you insert a printf in the correct place

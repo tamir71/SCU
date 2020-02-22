@@ -1,0 +1,54 @@
+Consider the following set of processes, with the length of the CPU burst time given in milliseconds. The processes are assumed to have arrived in the order P1, P2, P3, P4, and P5, all at time 0. Answer questions 1, 2, and 3.
+
+Process     Burst Time      Priority
+P1          2               2
+P2          1               1
+P3          8               4
+P4          4               2
+P5          5               3
+
+1. The order of execution of processes under non-preemptive SJF is then:
+
+P2, P1, P4, P5, P3
+
+2. The average waiting time for RR (quanta = 2) is equal to
+
+P1 = 0, P2 = 2, P3 = 12, P4 = 9, P5 = 13.
+Average waiting time = 7.2.
+
+3. The average waiting time for a non-preemptive priority (larger priority implies higher priority) is equal to
+
+P1 = 13, P2 = 19, P3 = 0, P4 = 15, P5 = 8.
+Average waiting time = 11.
+
+4. Which of the algorithms results in the minimum average waiting time?
+
+Shortest job first (both versions).
+
+5. In preemptive scheduling, the sections of code affected by interrupts must be guarded from simulataneous use.
+
+True.
+
+6. _____ is the number of processes that are completed per time unit.
+
+Throughput
+
+7. A CPU-scheduling algorithm determines an order for the execution of its scheduled processes. Given n processes to be scheduled on one processor, how many different schedules are possible?
+
+n!
+
+8. Most round-robin schedulers use a fixed size quantum. This is because a small quantum has the advantage of more closely modeling perfect processor sharing, so that short tasks will complete more quickly, reducing average response time. However, a small quantum will increase overhead due to the cost of switching contexts.
+
+True.
+
+9. Which of the following is true of multilevel queue scheduling?
+
+Each queue has its own scheduling algorithm.
+
+10. Suppose you do your homework assignments in SJF-order. After all, you feel like you are making a lot of progress! But there might be an issue. For example, shortest job first does not guarantee that all tasks are completed by their deadline. A long task (a final project perhaps) may never be completed if enough other work arrives in the meantime.
+
+True.
+
+11.For shortest job first, if the schuduler assigns a task to the processor, and no other task becomes schedulable in the meantime, will the scheduler ever preempt the current task?
+
+No.
