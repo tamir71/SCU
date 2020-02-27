@@ -1,0 +1,27 @@
+1. ____ allows a thread to run on only one processor
+
+Processor affinity.
+
+2. The two general approaches to load balancing are __ and __.
+
+Push migration, pull migration.
+
+3. Which of the following is true of earliest-deadline-first (EDF) scheduling algorithm?
+
+When a process becomes runnable, it must announce its deadline requirements to the system.
+
+4. For the following workload of five processes, the average waiting time using FIFO and SJF are:
+
+28, 13
+
+5. For the following workload of three processes, the average waiting time using SRTF are:
+
+None of the above (1.0, 3.2, 4.2)
+
+6. Consider two processes, P1 and P2, where p1 = 50, t1 = 25, p2 = 75, and t2 = 30. Can these two processes be scheduled using rate-monotonic scheduling?
+
+No.
+
+7. Write a simulated CPU scheduling application in C for an uniprocessor system. Include at least SCFS, RR, and SJC scheduling methods. Feel free to design your application in a way that it makes user friendly in terms of selection of scheduling method, workload, and performance. You may choose to work in a team with one or more of your classmates, but you need to indicate the names of your development team as a list of authors in the code commenting lines. Upload your code to Camino.
+
+Check Assignment7_code.c
