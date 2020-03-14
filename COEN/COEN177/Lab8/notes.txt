@@ -1,0 +1,1 @@
+From the data and graphs, it appears that second chance performs the best of the three, and slightly behind Least Recently Used performs well too. FIFO was the simplest to implement, but is the worst in terms of page fault performance.

@@ -1,0 +1,36 @@
+1. Run the commands:
+    `$ setup vmware`
+    `$ minix-get-image`
+    `$ vmware &`
+
+2. This will open the VMWare application.
+    a. Go to Minix3 and click start VM.
+
+3. Login as root, and you can set a password with passwd if you so wish
+
+4. Now we can start file transfer.
+    a. In your virtual machine: `# tcpd ftp /usr/bin/in.ftpd &`
+    b. In your virtual machine: `# ifconfig`, this will give you the IP address that you will FTP into
+    c. In your host machine: `ftp <xxx.xxx.xxx.xxx>` (your IP address)
+
+5. Now that we have setup the ftp server, run all commands on your host machine:
+    a. `$ cd /usr/src/kernel`
+    b. `$ get proc.c`
+    c. This will put the main.c onto your host machine's home directory
+    d. Edit your file however you want on your host machine (vi/emacs/tEdit) and save the changes
+    e. Now you can put it back with `$ put proc.c`
+
+6. The changes that were created could be found on the function called `pick_process()`
+    a. Inside the for loop, there is a line that checks if there is a process that is ready in that priority (q)
+    b. The change I implemented was to make sure that 30% of the time, (creating a random integer mod 10), I just skip that priority (q++)
+    c. This makes sure that each priority is reached, but it doesn't always hit the higher priority before lower priority processes.
+
+7. The changes in proc.c should be put back into the kernel folder.
+    a. Now in your virtual machine: `# cd /usr/src`
+    b. `# make world`, this will remake your kernel and will take a minute
+
+8. I didn't implement a secondary program to show that my changes to the scheduler were implemented.
+    a. The 30% chance to choose a lower priority process already showed enough difference to show that the schuduler has been changed.
+    b. Rebooting a fresh Minix would take approximately 5 seconds, and it would take you to the login screen
+    c. After the 30% change, the OS took over 3 minutes to reach the login screen.
+    d. Even after logging in, simple functions such as `ls` took a good one or two seconds to get through.

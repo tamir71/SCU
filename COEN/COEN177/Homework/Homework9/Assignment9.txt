@@ -1,0 +1,59 @@
+1. Consider the following page reference string: A, B, C, D, B, A, E, F, B, A, B, C, G, F, C, B, A, B, C, F. How many page faults would occur for the MIN replacement algorithm, assuming four frames? Remember that all frames are initially empty, so your first unique pages will cost one fault each.
+
+9
+
+2. [True/ False] Suppose that you want to use a paging algorithm that requires a reference bit (such as second-chance replacement or working-set model), but the hardware does not provide one. If so, the valid/invalid bit supported in hardware can be used to simulate the reference bit. Initially set the bit to invalid. On first reference, a trap to the operating system is generated. The operating system will set a software bit to 1 and reset the valid/invalid bit to valid.
+
+True.
+
+3. For the following question, consider that you have decided to splurge on a low end netbook for doing your operating systems homework during lectures in your non-computer science classes. The netbook has a single-level TLB and a single-level physically addressed cache. It also has two levels of page tables, and the operating system does demand paging to disk.The netbook comes in various configurations, and you want to make sure the configuration you purchase is fast enough to run your applications.To get a handle on this, you decide to measure its cache, TLB and paging performance running your applications in a virtual machine. The following figure lists what you discover for your workload. The TLB is refilled automatically by the hardware on a TLB miss. The page tables are kept in physical memory and are not cached, so looking up a page table entry incurs two memory accesses (one for each level of the page table). You may assume the operating system keeps a pool of clean pages, so pages do not need to be written back to disk on a page fault. The netbook has a few optional performance enhancements as given in the table below. With the faster network card, the time to access remote memory is 500 microseconds, and the probability of a remote memory miss (need to go to disk), given there is a page fault is 0.5. Suppose you have $200. What options should you buy to maximize the performance of the netbook for this workload?
+
+Faster disk and faster network.
+
+4. Consider the following page table for a system with 12-bit virtual and physical addresses and 256-byte pages. The list of free page frames is D, E, F (that is, D is at the head of the list, E is second, and F is last). A dash for a page frame indicates that the page is not in memory. The equivalent physical address in hexadecimal for the virtual address 700 is
+
+D00
+
+5. Some systems automatically delete all user files when a user logs off or a job terminates, unless the user explicitly requests that they be kept. Other systems keep all files unless the user explicitly deletes them. Is it true or false that the following describes the relative merits of each approach. Deleting all files not specifically saved by the user has the advantage of minimizing the file space needed for each user by not saving unwanted or unnecessary files. Saving all files unless specifically deleted is more secure for the user in that the user cannot lose files inadvertently by forgetting to save them.
+
+True
+
+6. [True/ False] Sharing of memory-mapped sections of memory among multiple processes can be efficiently realized without the usage of virtual memory:
+
+True
+
+7. An operating system may provide:
+
+Device drivers, interrupt handlers, file system, virtual memory.
+
+8. What information is required to mount a file system?
+
+The name of the device containing file system, file system type, and the mount point.
+
+9. Consider a disk queue holding requests to the following cylinders in the listed order: 116, 22, 3, 11, 75, 185, 100, 87. Using the FCFS scheduling algorithm, what is the order that the requests are serviced, assuming the disk head is at cylinder 88 and moving upward through the cylinders?
+
+116 - 22 - 3 - 11 - 75 - 185 - 100 - 87
+
+11. Consider a disk queue holding requests to the following cylinders in the listed order: 116, 22, 3, 11, 75, 185, 100, 87. Using the C-SCAN scheduling algorithm, what is the order that the requests are serviced, assuming the disk head is at cylinder 88 and moving upward through the cylinders?
+
+100 - 116 - 185 - 3 - 11 - 22 - 75 - 87
+
+12. [True/ False] In most RAID implementations, a hot spare disk is not used for data, but is configured for replacement should any other disk fail.
+
+True
+
+13. A RAID structure
+
+Is primarily used to ensure higher data reliability
+
+14. [True/False] All remote file systems allow clients to mount only one file system from remote machines.
+
+False
+
+15. The virtual file system layer:
+
+Provides mechanisms for uniquely representing files.
+
+16. When user tries to write a file, the file system needs to detect if that file is a directory so that it can restrict writes to maintain the directory’s internal consistency.Given a file’s name, how would you design each file system listed below to keep track of whether each file is a regular file or a directory? a) FAT, b)FFS, C)NTFS
+
+C: NTFS
