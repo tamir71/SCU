@@ -2,19 +2,19 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Name: Tamir Enkhjargal
 // Create Date: 02/13/2020
-// Module Name: programCounter
+// Module Name: pcBuffer
 //////////////////////////////////////////////////////////////////////////////////
 
-module programCounter(clock, in, address);
+module pcBuffer(clock, in, out);
 
 // Setting up variables: 
 input clock;
 input [7:0] in;
-output reg [7:0] address;
+output reg [7:0] out;
 
 // Run these lines when testing and input changes
-always@(posedge clock)
+always@(negedge clock)
 begin
-    address = in;
+    out = in;
 end
 endmodule

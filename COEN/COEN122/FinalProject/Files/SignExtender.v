@@ -8,12 +8,21 @@
 module signExtender(dataIn, dataOut);
 
 // Setting up variables: 
-input [31:0] dataIn;
-output reg [63:0] dataOut;
+input [21:0] dataIn;
+output reg [31:0] dataOut;
 
 // Run these lines when testing and input changes
 always@(dataIn)
 begin
-    dataOut[63:0] <= { {32{dataIn[31]}}, dataIn[31:0] };
+    dataOut[21:0]=dataIn;
+    
+    if(dataIn[21]==1)
+    begin
+        dataOut[31:22]=1;
+    end
+    else
+    begin
+        dataOut[31:22]=0;
+    end
 end
 endmodule
