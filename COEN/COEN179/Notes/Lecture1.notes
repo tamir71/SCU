@@ -1,0 +1,4 @@
+Compute f(20) = 1048575
+Compute f(30) = 1073741823
+Which gcd algorithm is faster?
+    The second gcd algorithm is faster than the first one. First takes ~7 seconds, second takes ~0 seconds.
