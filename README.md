@@ -29,6 +29,7 @@ COEN/CSCI
 |   \---Notes
 +---COEN 179 / CSCI 163
 |   \---Homework
+|   \---Notes
 +---CSCI 181
 |   \---Homework
 \
