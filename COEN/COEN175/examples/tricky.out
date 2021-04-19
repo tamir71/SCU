@@ -1,0 +1,23 @@
+keyword int
+identifier main
+operator (
+keyword void
+operator )
+operator {
+keyword char
+identifier c
+operator ,
+operator *
+identifier s
+operator ;
+identifier s
+operator =
+string "I said \"hello there\""
+operator ;
+identifier c
+operator ++
+operator ;
+operator --
+identifier s
+operator ;
+operator }
